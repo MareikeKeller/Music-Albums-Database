@@ -1,0 +1,168 @@
+{% extends "layout.html" %} {% block content %}
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'edit.js') }}"
+></script>
+
+<script>
+  let albums = {{albums|tojson}}
+  let data_id = {{data_id|tojson}}
+</script>
+
+<div id="changed_result"></div>
+
+<div class="heading" id="main">Edit Album</div>
+
+<form id="edit_form">
+  <div class="row">
+    <div class="col-md-4" id="test">
+      <label for="album_name_input" class="form-label">Album Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="album_name_input"
+        value=""
+        required
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label for="artist_name_input" class="form-label">Artist Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="artist_name_input"
+        value=""
+        required
+      />
+    </div>
+
+    <div class="col-md-2">
+      <label for="year_input" class="form-label">Year</label>
+      <input
+        type="number"
+        class="form-control"
+        id="year_input"
+        value="1994"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <label for="image_input" class="form-label">Album Cover Image URL</label>
+      <small id="summaryHelp" class="form-text text-muted"
+        >Please provide a complete URL to the album cover.</small
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="image_input"
+        value=""
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <label for="summary_input" class="form-label">Summary</label>
+      <small id="summaryHelp" class="form-text text-muted"></small>
+      <textarea
+        class="form-control"
+        id="summary_input"
+        value=""
+        rows="3"
+        required
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <label for="genres_input" class="form-label">Genres</label>
+      <small id="summaryHelp" class="form-text text-muted"
+        >Please separate each genre by using a comma, e.g
+        "Folk,Rock,Rop".</small
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="genres_input"
+        value=""
+        required
+      />
+    </div>
+
+    <div class="col-md-5">
+      <label for="awards_input" class="form-label">Awards won</label>
+      <small id="summaryHelp" class="form-text text-muted"
+        >Please separate each award by using a comma, e.g. "Grammy,MVA".</small
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="awards_input"
+        value=""
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5">
+      <label for="records_input" class="form-label">Records Sold</label>
+      <small id="summaryHelp" class="form-text text-muted"
+        >Records sold to date. Please use the notation "30 M"</small
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="records_input"
+        value=""
+        placeholder="Records Sold"
+        required
+      />
+    </div>
+
+    <div class="col-md-5">
+      <label for="streams_input" class="form-label">Monthly Listeners</label>
+      <small id="summaryHelp" class="form-text text-muted"
+        >E.g. on Spotify. Please use the notation "30 M"</small
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="streams_input"
+        value=""
+        placeholder="Monthly Listeners"
+        required
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-primary" type="submit" id="sumbit_album_btn">
+        Submit Changes
+      </button>
+    </div>
+
+    <div class="col-2">
+      <button class="btn btn-secondary" type="submit" id="discard_album_btn">
+        Discard Changes
+      </button>
+    </div>
+  </div>
+</form>
+
+<div id="dialog" title="Confirm Submission">
+  <p>Are you sure you want to submit the changes to this album?</p>
+</div>
+
+<div id="dialog_discard" title="Discard Changes">
+  <p>Are you sure you want to discard your changes?</p>
+</div>
+{% endblock %}

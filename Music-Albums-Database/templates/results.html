@@ -1,0 +1,95 @@
+{% extends "layout.html" %} {% block content %}
+
+
+<script type="text/javascript" src="{{ url_for('static', filename = 'results.js') }}"></script>
+
+
+<div class="row test top">
+  <div class="col-md-4 test2">
+
+<div class="row test">
+  <div class="col-md-10 test2"> <span id="heading_view"><b>{{data_id.album}}</b><br/></span>
+    
+    <span id="subheading"><b>by {{data_id.artist}}</b></span>
+  
+  </div>
+
+   <div class="col-md-2 test2">
+     <div id="edit_button_div">
+        <button
+            class="btn btn-secondary btn-sm"
+            type="submit"
+            id="edit_album_btn">
+            Edit
+        </button>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="row test">
+  <div class="grey" id="year">
+      <b>{{data_id.year}}</b>
+  </div
+></div>
+
+
+<div class="row test"> <div id="main">
+      <img src="{{data_id.cover}}" id="cover" alt="The album cover image of {{data_id.album}}" title="Album Cover" />
+    </div></div>
+  </div>
+
+   <div class="col-md-8 test2 side">
+    
+    <div class="row test">
+      <div class="col-md-4 sm_heading test2">Rank</div>
+        <div class="col-md-4 sm_heading test2">Records Sold</div>
+          <div class="col-md-4 sm_heading test2">Monthly Listeners</div>
+    </div>
+    <div class="row test">
+      <div class="col-md-4 subheading_results test2">{{data_id.id}}</div>
+        <div class="col-md-4 subheading_results test2">{{data_id.records_sold}}</div>
+          <div class="col-md-4 subheading_results test2">{{data_id.streams}}</div>
+    </div>
+
+    <div class="row test extra_space">
+      <div class="col-md-6 sm_heading test2">Awards Won</div>
+        <div class="col-md-6 sm_heading test2">Genres Impacted</div>
+    </div>
+        <div class="row test">
+      <div class="col-md-6 test2">
+
+        <div>
+            <ul>
+              {% for award in data_id.awards_won %}
+              <li id="data_row">{{award}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+      </div>
+
+        <div class="col-md-6 test2">
+            <div>
+              <ul>
+              {% for genre in data_id.genres %}
+               <a class="link-primary" href="/search/{{genre}}"><li id="data_row">{{genre}}</li></a> 
+              {% endfor %}
+              </ul>
+            </div>
+        </div>
+
+    </div>
+
+<div class="row test extra_space">
+   <div class="col-md-2 sm_heading test2">Summary</div>
+ </div>
+     <div class="row test">
+   <div class="col-md-12 test2">{{data_id.summary}}</div>
+ </div>
+  </div>
+</div>
+
+  {% endblock %}
+</div>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+
+    <!-- jquery -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    />
+
+    <!-- JS for search feature in nav bar-->
+
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}" /> -->
+    <link rel="stylesheet" href="../static/main.css" />
+    <title>People</title>
+
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename = 'layout.js') }}"
+    ></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <span id="navbar_icon">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/26/26805.png"
+            width="30px"
+            height="30px"
+            alt="A logo of a vinyl and a single note in the right corner."
+        /></span>
+        <a class="navbar-brand" href="/">Best Albums Database</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav"></div>
+          <button
+            class="btn btn-secondary btn-sm add_button"
+            type="button"
+            href="/add"
+          >
+            + add album
+          </button>
+        </div>
+        <form class="form-inline my-2 my-lg-0" id="search_form">
+          <input
+            class="form-control mr-sm-2"
+            id="form_input"
+            type="search"
+            placeholder="Search for Artist or Genre"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-primary btn-md"
+            type="submit"
+            id="submit_button"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="container">{% block content %} {% endblock %}</div>
+  </body>
+</html>

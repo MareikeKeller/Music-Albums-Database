@@ -1,0 +1,46 @@
+{% extends "layout.html" %} {% block content %}
+
+<script>
+  let albums = {{albums|tojson}}
+
+
+  console.log(albums)
+</script>
+
+<script
+  type="text/javascript"
+  src="{{ url_for('static', filename = 'welcome.js') }}"
+></script>
+
+<div class="container">
+  <div class="row heading">
+    <div class="col-md-12 text-center">
+      ✨The best albums, curated for you✨
+    </div>
+  </div>
+
+  <div class="row subtext">
+    <div class="col-md-12 text-center">
+      <ul>
+        <li>
+          🎧 Find your next listen in this curated database of top-ranked albums
+          making music history
+        </li>
+        <li>
+          👩‍🎤 Looking to buy a vinyl? Find your artist's best performing record
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="main">
+    <div class="row">
+      <div class="col-md-12 text-center subheading">
+        Explore popular seaches...
+      </div>
+    </div>
+    <div class="row" id="popular_search"></div>
+  </div>
+</div>
+
+{% endblock %}
